@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class TowerManager : Loader<TowerManager>
 {
-    TowerBtn towerBtnPressed;
+    public TowerBtn towerBtnPressed{get; set;}
 
     SpriteRenderer spriteRenderer;
 
@@ -31,12 +31,13 @@ public class TowerManager : Loader<TowerManager>
                 PlaceTower(hit);
             }
 
-            if (spriteRenderer.enabled)
-            {
-                FollowMouse();
-            }
-           
         }
+
+        if (spriteRenderer.enabled)
+        {
+            FollowMouse();
+        }
+
     }
 
     public void PlaceTower(RaycastHit2D hit)
@@ -45,12 +46,10 @@ public class TowerManager : Loader<TowerManager>
         {
             GameObject newTower = Instantiate(towerBtnPressed.TowerObject);
             newTower.transform.position = hit.transform.position;
+            DisableDrag();
         }
        
     }
-
-
-
 
     public void SelectedTower(TowerBtn towerSelected)
     {
@@ -63,7 +62,8 @@ public class TowerManager : Loader<TowerManager>
 
     public void FollowMouse()
     {
-        transform.position = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.position = new Vector2(transform.position.x, transform.position.y);
     }
 
     public void EnableDrag(Sprite sprite)
