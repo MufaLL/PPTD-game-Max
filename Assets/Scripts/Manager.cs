@@ -49,7 +49,7 @@ public class Manager : Loader<Manager>
 
 
     public List<Enemy> EnemyList = new List<Enemy>();
-    public List<Projectile> ProjectileList = new List<Projectile>();
+   
 
     const float spawnDelay = 0.8f;
 
@@ -145,13 +145,7 @@ public class Manager : Loader<Manager>
     }
 
 
-    public void RegisterProjectile(Projectile projectile)
-    {
-        Debug.Log("тест 1");
-        ProjectileList.Add(projectile);
-        Debug.Log("тест 2");
-
-    }
+    
 
     public void UnregisterEnemy(Enemy enemy)
     {
@@ -171,21 +165,7 @@ public class Manager : Loader<Manager>
     }
 
 
-    public void DestroyProjectiles()
-    {
-        foreach (Projectile projectile in ProjectileList)
-        {
-            //if (projectile != null)
-            //{
-            Destroy(projectile.gameObject);
-
-            //}
-
-        }
-
-        
-       
-    }
+  
 
 
 
@@ -251,7 +231,7 @@ public class Manager : Loader<Manager>
                 totalEscapedLabel.text = " " + TotalEscaped + " ";
                 break;
         }
-        DestroyProjectiles();
+        
         DestroyEnemies();
         TotalKilled = 0;
         RoundEscaped = 0;
@@ -307,9 +287,5 @@ public class Manager : Loader<Manager>
 
   
 
-    public void UnregisterProjectile(Projectile collision)
-    {
-        ProjectileList.Remove(collision);
-        Destroy(collision.gameObject );
-    }
+    
 }

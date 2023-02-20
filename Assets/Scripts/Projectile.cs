@@ -30,8 +30,7 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         
-        Manager.Instance.RegisterProjectile(this);
-        Debug.Log("тест 3");
+       
     }
 
 
