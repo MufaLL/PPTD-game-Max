@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class TowerControl : MonoBehaviour
 {
+    [SerializeField]
+    private AudioSource shotSound;
+
 
     [SerializeField]
     float timeBetweenAttacks;
@@ -69,6 +72,7 @@ public class TowerControl : MonoBehaviour
         isAttacking = false;
         Projectile newProjectile = Instantiate(projectile) as Projectile;
         newProjectile.transform.localPosition = transform.localPosition;
+        shotSound.Play();
 
         if (targetEnemy == null)
         {

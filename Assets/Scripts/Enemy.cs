@@ -70,7 +70,7 @@ public class Enemy : MonoBehaviour
         }
         else if (collision.tag == "Finish")
         {
-            Manager.Instance.removeEnemyFromScreen();
+            
             Destroy(gameObject);
             Manager.Instance.RoundEscaped += 1;
             Manager.Instance.TotalEscaped += 1;
