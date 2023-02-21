@@ -31,7 +31,7 @@ public class TowerManager : Loader<TowerManager>
             if (hit.collider.tag == "TowerSide")
             {
                 buildTile = hit.collider;
-                buildTile.GetComponent<Collider>().tag = "TowerSideFull";
+                buildTile.GetComponent<Collider2D>().tag = "TowerSideFull";
                 RegisterBuildSite(buildTile);
                 PlaceTower(hit);
             }
